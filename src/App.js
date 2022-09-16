@@ -134,7 +134,7 @@ function App() {
 									<img
 										src={album.images[0].url}
 										alt="/"
-										className="rounded-t-lg"
+										className="rounded-t-lg shadow-sm"
 									/>
 									<p className="p-2 pop">{album.name}</p>
 								</div>
