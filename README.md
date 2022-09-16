@@ -4,6 +4,8 @@
 
 ### Changelog:
 
+9/15/2022
+
 - Dev dependencies added (tailwind, react)
 - Successful connection to spotify API
 - Basic app layout and info display
