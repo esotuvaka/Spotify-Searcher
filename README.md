@@ -9,9 +9,11 @@
 - Dev dependencies added (tailwind, react)
 - Successful connection to spotify API
 - Basic app layout and info display
+- Made monolith App.js file (will break down into components later)
 
 ### Working changes:
 
+- ! Convert App.js into components with props to improve readability and reduce app-breaking bugs
 - ! Add links to new spotify tab with artist or album, depending on card
 - Add suggested search results to enable finding smaller artists with similar names (e.g: anders vs anderson .paak)
 - Add Genres to artist card (will need to be mapped)
