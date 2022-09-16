@@ -1,4 +1,3 @@
-import ResultGallery from './components/ResultGallery';
 import { useEffect, useState } from 'react';
 
 const CLIENT_ID = 'b735756be4674ec08ea99b684cfa966c';
@@ -76,6 +75,10 @@ function App() {
 	}
 	console.log(albums);
 
+	const follNum = `${artistStats.followers.total
+		.toString()
+		.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} Followers`;
+
 	return (
 		<main className="w-full h-screen overflow-x-hidden bg-neutral-300">
 			<header className="w-full">
@@ -113,9 +116,7 @@ function App() {
 					>
 						<div className="">
 							<h1 className="pop text-4xl pb-0 p-2">{artistStats.name}</h1>
-							<p className="pop text-xl p-2 py-0">
-								{artistStats.followers.total} Followers
-							</p>
+							<p className="pop text-xl p-2 py-0">{follNum}</p>
 						</div>
 						<div id="artist-image" className>
 							<img

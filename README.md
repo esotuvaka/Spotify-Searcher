@@ -12,6 +12,8 @@
 
 ### Working changes:
 
+- ! Add links to new spotify tab with artist or album, depending on card
+- Add suggested search results to enable finding smaller artists with similar names (e.g: anders vs anderson .paak)
 - Add Genres to artist card (will need to be mapped)
 - Add Day of release to album card
 - Make artist card a clickable link to the artist's page
