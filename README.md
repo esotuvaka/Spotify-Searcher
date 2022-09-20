@@ -6,6 +6,7 @@
 
 9/19/2022
 
+- FIXED ASYNC AWAIT LOADING ERROR
 - Added Genres to ArtistCard
 - Converted some of App.js file into components
 - Added link that opens Spotify app on the artist's page
