@@ -1,4 +1,9 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import Welcome from './components/Welcome';
+
+import Logo from './assets/S-Logo.png';
+import ArtistCard from './components/ArtistCard';
 
 const CLIENT_ID = 'b735756be4674ec08ea99b684cfa966c';
 const CLIENT_SECRET = 'd9d47b64576946e3903805ef5be2884e';
@@ -6,6 +11,7 @@ const CLIENT_SECRET = 'd9d47b64576946e3903805ef5be2884e';
 function App() {
 	const [searchInput, setSearchInput] = useState('');
 	const [accessToken, setAccessToken] = useState('');
+	const [loading, setLoading] = useState(true);
 	const [artistStats, setArtistStats] = useState([]);
 	const [albums, setAlbums] = useState([]);
 
@@ -47,7 +53,6 @@ function App() {
 				console.log(data); //General data about artists with similar names to searchInput
 				return data.artists.items[0].id;
 			});
-		console.log('artist id is ' + artistID);
 
 		const returnedArtistStats = await fetch(
 			//JUST FOR THE ARTISTS GENERAL STATS
@@ -67,83 +72,80 @@ function App() {
 			.then((response) => response.json())
 			.then((data) => {
 				setAlbums(data.items);
+				console.log(data);
 			});
 
-		//display those albums
-
-		//get request with artist ID to get artist stats
+		setLoading(false);
 	}
-	console.log(albums);
-
-	const follNum = `${artistStats.followers.total
-		.toString()
-		.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} Followers`;
 
 	return (
-		<main className="w-full h-screen overflow-x-hidden bg-neutral-300">
-			<header className="w-full">
-				<div id="outer-container" className="h-20 grid place-items-center">
-					<div className="flex items-center justify-center">
-						<div className="flex">
-							<input
-								type="text"
-								id="search"
-								name="search"
-								placeholder="Enter an artist' name"
-								className="border pop font-light border-neutral-300 px-2 rounded-l-lg focus:rounded-r-none rounded-r-none h-7 "
-								onKeyUp={(e) => {
-									if (e.key === 'Enter') {
-										Search();
-									}
-								}}
-								onChange={(e) => setSearchInput(e.target.value)}
-							/>
+		<main id="main-bg" className="w-full h-screen overflow-x-hidden">
+			<header className="w-full z-50 shadow-md fixed top-0 bg-white">
+				<div id="outer-container" className="h-24 grid place-items-center">
+					<div className="w-full">
+						<div className="flex w-4/5 mx-auto items-center justify-between">
+							<button className="text-white bg-neutral-800 px-3 h-7 rounded-md pop ">
+								<a href="/">HOME</a>
+							</button>
+							<div className="flex">
+								<input
+									type="text"
+									id="search"
+									name="search"
+									placeholder="Enter an artist's name"
+									className="border focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 pop font-light border-neutral-300 px-2 rounded-l-lg focus:rounded-r-none rounded-r-none h-7 "
+									onKeyUp={(e) => {
+										if (e.key === 'Enter') {
+											Search();
+										}
+									}}
+									onChange={(e) => setSearchInput(e.target.value)}
+								/>
+
+								<button
+									className="px-3 flex h-7 items-center justify-center bg-neutral-800 text-white pop rounded-r-md"
+									onClick={(e) => Search()}
+								>
+									SEARCH
+								</button>
+							</div>
+							<div />
 						</div>
-						<button
-							className="px-3 flex h-7 items-center justify-center bg-neutral-900 text-white pop rounded-r-md"
-							onClick={(e) => Search()}
-						>
-							SEARCH
-						</button>
 					</div>
 				</div>
 			</header>
-			<div id="artist-info" className="pb-32 w-full">
-				<div id="artist-link" className="w-4/5 mx-auto py-4">
+			{loading ? (
+				<Welcome />
+			) : (
+				<div className="pb-32 mt-28 w-full">
+					<ArtistCard props={artistStats} />
 					<div
-						id="artist-stats"
-						className="bg-white hover:shadow-md transition-all duration-300 hover:cursor-pointer hover:-translate-y-0.5 hover:shadow-neutral-500 shadow-sm shadow-neutral-500 rounded-lg flex"
+						id="albums-array"
+						className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-4/5 gap-1 mx-auto"
 					>
-						<div className="">
-							<h1 className="pop text-4xl pb-0 p-2">{artistStats.name}</h1>
-							<p className="pop text-xl p-2 py-0">{follNum}</p>
-						</div>
-						<div id="artist-image" className>
-							<img
-								src={artistStats.images[0].url}
-								alt="/"
-								className="rounded-r-lg"
-							/>
-						</div>
+						{React.Children.toArray(
+							albums.map((album, i) => {
+								return (
+									<>
+										<div className="flex flex-col bg-white rounded-lg shadow-md shadow-neutral-500 items-center">
+											<img
+												src={album.images[0].url}
+												alt="/"
+												className="rounded-t-lg shadow-sm"
+											/>
+											<div className="flex w-full flex-col justify-center items-center h-full">
+												<p className="pop text-center w-11/12 mx-auto py-2">
+													{album.name}
+												</p>
+											</div>
+										</div>
+									</>
+								);
+							})
+						)}
 					</div>
 				</div>
-				<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-4/5 gap-1 mx-auto">
-					{albums.map((album, i) => {
-						return (
-							<>
-								<div className="flex flex-col bg-white rounded-lg shadow-sm shadow-neutral-500">
-									<img
-										src={album.images[0].url}
-										alt="/"
-										className="rounded-t-lg shadow-sm"
-									/>
-									<p className="p-2 pop">{album.name}</p>
-								</div>
-							</>
-						);
-					})}
-				</div>
-			</div>
+			)}
 		</main>
 	);
 }
