@@ -5,3 +5,11 @@
 .pop {
 	@apply font-['Poppins'];
 }
+
+.button-on {
+	@apply text-white bg-black px-4 py-1 rounded-md ring-2 mx-1 ring-black;
+}
+
+.button-off {
+	@apply text-black bg-white px-4 py-1 rounded-md ring-2 mx-1 ring-black hover:cursor-pointer;
+}
