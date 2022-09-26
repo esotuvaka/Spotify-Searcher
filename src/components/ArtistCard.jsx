@@ -8,7 +8,7 @@ const ArtistCard = ({ props, genresNum, links, activeTheme }) => {
 			<div
 				className={
 					activeTheme === '#262626'
-						? 'bg-neutral-800 transition-all duration-300 shadow-md shadow-neutral-700 rounded-lg flex sm:flex-row flex-col sm:h-96 justify-between 2xl:h-[50vh]'
+						? 'bg-neutral-800 transition-all duration-300 shadow-md shadow-black rounded-lg flex sm:flex-row flex-col sm:h-96 justify-between 2xl:h-[50vh]'
 						: 'bg-white transition-all duration-300 shadow-md shadow-neutral-700 rounded-lg flex sm:flex-row flex-col sm:h-96 justify-between 2xl:h-[50vh]'
 				}
 			>

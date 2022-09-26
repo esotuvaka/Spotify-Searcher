@@ -11,7 +11,7 @@ const Options = (props, activeTheme) => {
 			className={
 				theme === '#262626'
 					? 'w-80 h-screen bg-neutral-800 pop text-lg transition-all duration-300 text-white'
-					: 'w-80 h-screen transition-all duration-300 text-black bg-white pop text-lg'
+					: 'w-80 h-screen transition-all duration-300 text-black bg-neutral-50 pop text-lg'
 			}
 		>
 			<div>

@@ -5,7 +5,7 @@ const AlbumCard = ({ image, name, browserLink, appLink, links }) => {
 		<>
 			<div
 				// href={links === 'browser' ? browserLink : appLink}
-				className="flex flex-col bg-white rounded-lg shadow-md shadow-neutral-700 items-center hover:cursor-pointer hover:shadow-lg hover:shadow-neutral-700 hover:-translate-y-1 transition-all duration-300    "
+				className="flex flex-col bg-white rounded-lg shadow-md shadow-black items-center hover:cursor-pointer hover:shadow-lg hover:shadow-neutral-700 hover:-translate-y-1 transition-all duration-300    "
 			>
 				<img src={image} alt="/" className="rounded-t-lg shadow-sm" />
 				<div className="flex w-full flex-col justify-center items-center h-full">

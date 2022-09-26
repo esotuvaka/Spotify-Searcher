@@ -8,7 +8,9 @@ import AlbumCard from './components/AlbumCard';
 // environment variables are embedded into the build, so can't store secrets securely without calling a backend that then calls the spotify API. Will let these secrets stay here for now
 const CLIENT_ID = 'b735756be4674ec08ea99b684cfa966c';
 const CLIENT_SECRET = 'd9d47b64576946e3903805ef5be2884e';
-const REDIRECT_URI = 'http://localhost:3000';
+
+//CHANGE URI TO 'http://localhost:3000' when developing
+const REDIRECT_URI = 'https://esotuvaka.github.io/spotify-searcher';
 const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
 const RESPONSE_TYPE = 'token';
 
@@ -120,8 +122,8 @@ function App() {
 				style={{ background: theme === '#262626' ? `#262626` : `#ffffff` }}
 				className={
 					theme === '#262626'
-						? 'w-full bg-neutral-800 text-white z-50 shadow-md fixed top-0 transition-all duration-300  '
-						: 'w-full bg-white text-neutral-800 z-50 shadow-md fixed top-0 transition-all duration-300  '
+						? 'w-full bg-neutral-800 text-white z-10 shadow-sm fixed top-0 transition-all duration-300 shadow-black'
+						: 'w-full bg-white text-neutral-800 z-10 shadow-md fixed top-0 transition-all duration-300'
 				}
 			>
 				<div id="outer-container" className="h-24 grid place-items-center ">
