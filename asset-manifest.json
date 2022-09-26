@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.f7b98978.css",
-    "main.js": "/react-gh-pages/static/js/main.7ab83bb6.js",
-    "static/media/S-Logo.png": "/react-gh-pages/static/media/S-Logo.cd2c2228d20d582d5ef5.png",
-    "index.html": "/react-gh-pages/index.html",
-    "main.f7b98978.css.map": "/react-gh-pages/static/css/main.f7b98978.css.map",
-    "main.7ab83bb6.js.map": "/react-gh-pages/static/js/main.7ab83bb6.js.map"
+    "main.css": "/spotify-searcher/static/css/main.f7b98978.css",
+    "main.js": "/spotify-searcher/static/js/main.ab5c934b.js",
+    "static/media/S-Logo.png": "/spotify-searcher/static/media/S-Logo.cd2c2228d20d582d5ef5.png",
+    "index.html": "/spotify-searcher/index.html",
+    "main.f7b98978.css.map": "/spotify-searcher/static/css/main.f7b98978.css.map",
+    "main.ab5c934b.js.map": "/spotify-searcher/static/js/main.ab5c934b.js.map"
   },
   "entrypoints": [
     "static/css/main.f7b98978.css",
-    "static/js/main.7ab83bb6.js"
+    "static/js/main.ab5c934b.js"
   ]
 }
