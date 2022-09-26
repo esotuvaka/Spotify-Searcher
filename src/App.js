@@ -10,7 +10,7 @@ const CLIENT_ID = 'b735756be4674ec08ea99b684cfa966c';
 const CLIENT_SECRET = 'd9d47b64576946e3903805ef5be2884e';
 
 //CHANGE URI TO 'http://localhost:3000' when developing
-const REDIRECT_URI = 'https://esotuvaka.github.io/spotify-searcher';
+const REDIRECT_URI = 'https://esotuvaka.github.io/Spotify-Searcher/';
 const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
 const RESPONSE_TYPE = 'token';
 
