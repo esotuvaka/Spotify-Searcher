@@ -4,12 +4,12 @@ import Genre from './Genre';
 
 const ArtistCard = ({ props, genresNum, links, activeTheme }) => {
 	return (
-		<div id="artist-card" className="w-4/5 lg:w-2/3 mx-auto pb-4">
+		<div id="artist-card" className="mx-auto w-4/5 pb-4 lg:w-2/3">
 			<div
 				className={
 					activeTheme === '#262626'
-						? 'bg-neutral-800 transition-all duration-300 shadow-md shadow-black rounded-lg flex sm:flex-row flex-col sm:h-96 justify-between 2xl:h-[50vh]'
-						: 'bg-white transition-all duration-300 shadow-md shadow-neutral-700 rounded-lg flex sm:flex-row flex-col sm:h-96 justify-between 2xl:h-[50vh]'
+						? 'flex flex-col justify-between rounded-lg bg-neutral-800 shadow-md shadow-black transition-all duration-300 sm:h-96 sm:flex-row xl:h-[30vh] 2xl:h-[50vh]'
+						: 'flex flex-col justify-between rounded-lg bg-white shadow-md shadow-neutral-700 transition-all duration-300 sm:h-96 sm:flex-row xl:h-[30vh] 2xl:h-[50vh]'
 				}
 			>
 				<div className="mx-[5%] my-[5%]">
@@ -36,21 +36,21 @@ const ArtistCard = ({ props, genresNum, links, activeTheme }) => {
 							.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}{' '}
 						Followers
 					</p>
-					<div id="artist-links" className="flex mt-4">
-						<button className="px-2 py-1 bg-green-600 text-white pop w-[90px] rounded shadow-sm shadow-neutral-700 hover:shadow-md hover:shadow-neutral-700 transition-all duration-300 hover:-translate-y-0.5">
+					<div id="artist-links" className="mt-4 flex">
+						<button className="pop w-[90px] rounded bg-green-600 px-2 py-1 text-white shadow-sm shadow-neutral-700 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:shadow-neutral-700">
 							<a
 								target="_blank"
 								rel="noreferrer"
 								href={
 									links === 'browser' ? props.external_urls.spotify : props.uri
 								}
-								className="flex justify-between items-center w-full"
+								className="flex w-full items-center justify-between"
 							>
 								Open <img src={Logo} alt="Spotify logo" className="h-6" />
 							</a>
 						</button>
 					</div>
-					<div id="artist-genres" className="w-full flex flex-col mt-4 ">
+					<div id="artist-genres" className="mt-4 flex w-full flex-col ">
 						{React.Children.toArray(
 							props.genres
 								?.slice(0, genresNum)
@@ -68,7 +68,7 @@ const ArtistCard = ({ props, genresNum, links, activeTheme }) => {
 					<img
 						src={props.images[0].url}
 						alt="/"
-						className="rounded-b-lg sm:rounded-r-lg sm:rounded-bl-none w-full sm:h-96 2xl:h-[50vh]"
+						className="w-full rounded-b-lg sm:h-96 sm:rounded-r-lg sm:rounded-bl-none xl:h-[30vh] 2xl:h-[50vh]"
 					/>
 				</div>
 			</div>

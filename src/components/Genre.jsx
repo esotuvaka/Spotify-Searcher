@@ -5,8 +5,8 @@ const Genre = ({ genreTag, activeTheme }) => {
 		<div
 			className={
 				activeTheme === '#262626'
-					? 'pop bg-black text-white flex px-2 py-1 m-[1px] text-sm rounded whitespace-nowrap w-min'
-					: 'pop bg-neutral-800 text-white flex px-2 py-1 m-[1px] text-sm rounded whitespace-nowrap w-min'
+					? 'pop m-[1px] flex w-min whitespace-nowrap rounded bg-black px-2 py-1 text-sm text-white'
+					: 'pop m-[1px] flex w-min whitespace-nowrap rounded bg-neutral-800 px-2 py-1 text-sm text-white'
 			}
 		>
 			<p>{genreTag}</p>

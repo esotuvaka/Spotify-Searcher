@@ -10,17 +10,17 @@ const Options = (props, activeTheme) => {
 		<aside
 			className={
 				theme === '#262626'
-					? 'w-80 h-screen bg-neutral-800 pop text-lg transition-all duration-300 text-white'
-					: 'w-80 h-screen transition-all duration-300 text-black bg-neutral-50 pop text-lg'
+					? 'pop h-screen w-80 bg-neutral-900 text-lg text-white transition-all duration-300'
+					: 'pop h-screen w-80 bg-neutral-50 text-lg text-black transition-all duration-300'
 			}
 		>
 			<div>
-				<div className="flex w-4/5 mx-auto justify-between items-center my-8">
+				<div className="mx-auto my-8 flex w-4/5 items-center justify-between">
 					<h2
 						className={
 							theme === '#262626'
-								? 'px-3 text-white text-3xl border-b-2 border-white pop mx-auto transition-all duration-300'
-								: 'px-3 text-black text-3xl border-b-2 border-black pop mx-auto transition-all duration-300'
+								? 'pop mx-auto border-b-2 border-white px-3 text-3xl text-white transition-all duration-300'
+								: 'pop mx-auto border-b-2 border-black px-3 text-3xl text-black transition-all duration-300'
 						}
 					>
 						OPTIONS
@@ -29,8 +29,8 @@ const Options = (props, activeTheme) => {
 						onClick={() => props.changeOptionsOpen(false)}
 						className={
 							theme === '#262626'
-								? 'bg-white text-black px-3 h-7 rounded-md pop hover:cursor-pointer'
-								: 'bg-neutral-800 text-white px-3 h-7 rounded-md pop hover:cursor-pointer'
+								? 'pop h-7 rounded-md bg-white px-3 text-black hover:cursor-pointer'
+								: 'pop h-7 rounded-md bg-neutral-800 px-3 text-white hover:cursor-pointer'
 						}
 					>
 						X
@@ -41,7 +41,7 @@ const Options = (props, activeTheme) => {
 						<p className="text-xl">Theme:</p>
 						<div
 							id="color-selector"
-							className="grid grid-cols-4 mx-auto w-3/5 justify-between my-2 place-items-center"
+							className="mx-auto my-2 grid w-3/5 grid-cols-4 place-items-center justify-between"
 						>
 							<div
 								onClick={() => {
@@ -50,8 +50,8 @@ const Options = (props, activeTheme) => {
 								}}
 								className={
 									theme === '#f5f5f4'
-										? 'w-6 h-6 m-1 rounded-full bg-stone-200 ring-black ring-2'
-										: 'w-6 h-6 m-1 rounded-full bg-stone-200 hover:cursor-pointer'
+										? 'm-1 h-6 w-6 rounded-full bg-stone-200 ring-2 ring-black'
+										: 'm-1 h-6 w-6 rounded-full bg-stone-200 hover:cursor-pointer'
 								}
 							/>
 							<div
@@ -61,8 +61,8 @@ const Options = (props, activeTheme) => {
 								}}
 								className={
 									theme === '#262626'
-										? 'w-6 h-6 m-1 rounded-full bg-neutral-800 ring-black ring-2'
-										: 'w-6 h-6 m-1 rounded-full bg-neutral-800 hover:cursor-pointer'
+										? 'm-1 h-6 w-6 rounded-full bg-neutral-800 ring-2 ring-black'
+										: 'm-1 h-6 w-6 rounded-full bg-neutral-800 hover:cursor-pointer'
 								}
 							/>
 							<div
@@ -72,8 +72,8 @@ const Options = (props, activeTheme) => {
 								}}
 								className={
 									theme === '#ef4444'
-										? 'w-6 h-6 m-1 rounded-full bg-red-500 ring-black ring-2'
-										: 'w-6 h-6 m-1 rounded-full bg-red-500 hover:cursor-pointer'
+										? 'm-1 h-6 w-6 rounded-full bg-red-500 ring-2 ring-black'
+										: 'm-1 h-6 w-6 rounded-full bg-red-500 hover:cursor-pointer'
 								}
 							/>
 							<div
@@ -83,8 +83,8 @@ const Options = (props, activeTheme) => {
 								}}
 								className={
 									theme === '#818cf8'
-										? 'w-6 h-6 m-1 rounded-full bg-indigo-400 ring-black ring-2'
-										: 'w-6 h-6 m-1 rounded-full bg-indigo-400 hover:cursor-pointer'
+										? 'm-1 h-6 w-6 rounded-full bg-indigo-400 ring-2 ring-black'
+										: 'm-1 h-6 w-6 rounded-full bg-indigo-400 hover:cursor-pointer'
 								}
 							/>
 							<div
@@ -94,8 +94,8 @@ const Options = (props, activeTheme) => {
 								}}
 								className={
 									theme === '#1d4ed8'
-										? 'w-6 h-6 m-1 rounded-full bg-blue-700 ring-black ring-2'
-										: 'w-6 h-6 m-1 rounded-full bg-blue-700 hover:cursor-pointer'
+										? 'm-1 h-6 w-6 rounded-full bg-blue-700 ring-2 ring-black'
+										: 'm-1 h-6 w-6 rounded-full bg-blue-700 hover:cursor-pointer'
 								}
 							/>
 							<div
@@ -105,8 +105,8 @@ const Options = (props, activeTheme) => {
 								}}
 								className={
 									theme === '#059669'
-										? 'w-6 h-6 m-1 rounded-full bg-emerald-600 ring-black ring-2'
-										: 'w-6 h-6 m-1 rounded-full bg-emerald-600 hover:cursor-pointer'
+										? 'm-1 h-6 w-6 rounded-full bg-emerald-600 ring-2 ring-black'
+										: 'm-1 h-6 w-6 rounded-full bg-emerald-600 hover:cursor-pointer'
 								}
 							/>
 							<div
@@ -116,8 +116,8 @@ const Options = (props, activeTheme) => {
 								}}
 								className={
 									theme === '#f97316'
-										? 'w-6 h-6 m-1 rounded-full bg-orange-500 ring-black ring-2'
-										: 'w-6 h-6 m-1 rounded-full bg-orange-500 hover:cursor-pointer'
+										? 'm-1 h-6 w-6 rounded-full bg-orange-500 ring-2 ring-black'
+										: 'm-1 h-6 w-6 rounded-full bg-orange-500 hover:cursor-pointer'
 								}
 							/>
 							<div
@@ -127,16 +127,16 @@ const Options = (props, activeTheme) => {
 								}}
 								className={
 									theme === '#eab308'
-										? 'w-6 h-6 m-1 rounded-full bg-yellow-500 ring-black ring-2'
-										: 'w-6 h-6 m-1 rounded-full bg-yellow-500 hover:cursor-pointer'
+										? 'm-1 h-6 w-6 rounded-full bg-yellow-500 ring-2 ring-black'
+										: 'm-1 h-6 w-6 rounded-full bg-yellow-500 hover:cursor-pointer'
 								}
 							/>
 						</div>
 					</li>
 					<li className="">
-						<p className="text-xl mt-4">Genres:</p>
+						<p className="mt-4 text-xl">Genres:</p>
 						<div>
-							<ul className="flex flex-row my-4 items-center justify-center">
+							<ul className="my-4 flex flex-row items-center justify-center">
 								<li
 									onClick={() => {
 										setGenNum(1);
@@ -177,8 +177,8 @@ const Options = (props, activeTheme) => {
 						</div>
 					</li>
 					<li>
-						<p className="text-xl mt-4">Open Links In:</p>
-						<div className="flex flex-row justify-center items-center my-4">
+						<p className="mt-4 text-xl">Open Links In:</p>
+						<div className="my-4 flex flex-row items-center justify-center">
 							<button
 								onClick={() => {
 									setLinkPref('browser');

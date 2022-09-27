@@ -6,13 +6,10 @@ import ArtistCard from './components/ArtistCard';
 import AlbumCard from './components/AlbumCard';
 
 // environment variables are embedded into the build, so can't store secrets securely without calling a backend that then calls the spotify API. Will let these secrets stay here for now
+
+// CLIENT ID and SECRET are used for base artist album search
 const CLIENT_ID = 'b735756be4674ec08ea99b684cfa966c';
 const CLIENT_SECRET = 'd9d47b64576946e3903805ef5be2884e';
-
-//CHANGE URI TO 'http://localhost:3000' when developing
-const REDIRECT_URI = 'https://esotuvaka.github.io/Spotify-Searcher/';
-const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
-const RESPONSE_TYPE = 'token';
 
 function App() {
 	const [accessToken, setAccessToken] = useState('');
@@ -21,11 +18,9 @@ function App() {
 	const [searchInput, setSearchInput] = useState('');
 	const [openOptions, setOpenOptions] = useState(false);
 
-	//OPTIONS (Look into refactoring into a single state object since they're all derived from Options component)
 	const [theme, setTheme] = useState('#f5f5f4');
 	const [genreNum, setGenreNum] = useState(3);
 	const [linkPref, setLinkPref] = useState('app');
-	//
 
 	const [artistStats, setArtistStats] = useState([]);
 
@@ -70,7 +65,7 @@ function App() {
 			.then((data) => {
 				setArtistStats(data.artists.items[0]);
 				artistID = data.artists.items[0].id;
-				changeColor(data.artists.items[0]);
+
 				console.log(data);
 			});
 
@@ -88,23 +83,8 @@ function App() {
 		setLoading(false);
 	}
 
-	function changeColor(item) {
-		let a = '';
-		for (const value of item.genres) {
-			if (item.genres.includes('metal')) {
-				a = '#ef4444';
-			} else if (item.genres.includes('rap')) {
-				a = '#ff33ff';
-			}
-		}
-		console.log('a here: ' + a);
-
-		return;
-	}
-
 	const handleChange = (e) => {
 		setSearchInput(e.target.value);
-		console.log('this changed');
 	};
 
 	return (
@@ -116,32 +96,20 @@ function App() {
 						: `linear-gradient(#ffffff, ${theme})`,
 			}}
 			id="main-bg"
-			className="w-full h-screen overflow-x-hidden transition-all duration-300"
+			className="h-screen w-full overflow-x-hidden transition-all duration-300"
 		>
 			<header
 				style={{ background: theme === '#262626' ? `#262626` : `#ffffff` }}
 				className={
 					theme === '#262626'
-						? 'w-full bg-neutral-800 text-white z-10 shadow-sm fixed top-0 transition-all duration-300 shadow-black'
-						: 'w-full bg-white text-neutral-800 z-10 shadow-md fixed top-0 transition-all duration-300'
+						? 'fixed top-0 z-10 w-full bg-neutral-800 text-white shadow-sm shadow-black transition-all duration-300'
+						: 'fixed top-0 z-10 w-full bg-white text-neutral-800 shadow-md transition-all duration-300'
 				}
 			>
-				<div id="outer-container" className="h-24 grid place-items-center ">
+				<div id="outer-container" className="grid h-24 place-items-center ">
 					<div className="w-full">
-						<div className="flex w-4/5 lg:w-2/3 mx-auto items-center justify-between ">
-							<button
-								className={
-									theme === '#262626'
-										? 'bg-stone-200 text-black px-3 h-7 flex justify-center items-center rounded-md pop'
-										: 'bg-neutral-800 text-white px-3 h-7 flex justify-center items-center rounded-md pop'
-								}
-							>
-								<a
-									href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
-								>
-									LOGIN
-								</a>
-							</button>
+						<div className="mx-auto flex w-4/5 items-center justify-between lg:w-2/3 ">
+							<div id="search-centerer" />
 							<div className="flex">
 								<input
 									type="text"
@@ -150,8 +118,8 @@ function App() {
 									placeholder="Enter an artist's name"
 									className={
 										theme === '#262626'
-											? 'border focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 pop font-light border-neutral-700 px-2 rounded-l-lg focus:rounded-r-none rounded-r-none h-7 bg-black'
-											: 'border focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 pop font-light border-neutral-300 px-2 rounded-l-lg focus:rounded-r-none rounded-r-none h-7'
+											? 'pop h-7 rounded-l-lg rounded-r-none border border-neutral-700 bg-black px-2 font-light focus:rounded-r-none focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500'
+											: 'pop h-7 rounded-l-lg rounded-r-none border border-neutral-300 px-2 font-light focus:rounded-r-none focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500'
 									}
 									onKeyUp={(e) => {
 										if (e.key === 'Enter') {
@@ -164,8 +132,8 @@ function App() {
 								<button
 									className={
 										theme === '#262626'
-											? 'px-3 flex h-7 items-center justify-center bg-stone-200 text-black pop rounded-r-md'
-											: 'px-3 flex h-7 items-center justify-center bg-neutral-800 text-white pop rounded-r-md'
+											? 'pop flex h-7 items-center justify-center rounded-r-md bg-black px-3 text-white'
+											: 'pop flex h-7 items-center justify-center rounded-r-md bg-neutral-800 px-3 text-white'
 									}
 									onClick={(e) => {
 										Search();
@@ -178,8 +146,8 @@ function App() {
 								onClick={() => setOpenOptions(true)}
 								className={
 									theme === '#262626'
-										? 'bg-stone-200 text-black px-3 h-7 flex justify-center items-center rounded-md pop'
-										: 'bg-neutral-800 text-white px-3 h-7 flex justify-center items-center rounded-md pop'
+										? 'pop flex h-7 items-center justify-center rounded-md bg-black px-3 text-white'
+										: 'pop flex h-7 items-center justify-center rounded-md bg-neutral-800 px-3 text-white'
 								}
 							>
 								OPTIONS
@@ -209,7 +177,7 @@ function App() {
 								? `linear-gradient(${theme}, #000000)`
 								: `linear-gradient(#ffffff, ${theme})`,
 					}}
-					className="pb-32 mt-24 pt-8 w-full"
+					className="mt-24 w-full pb-32 pt-8"
 				>
 					<ArtistCard
 						props={artistStats}
@@ -219,19 +187,25 @@ function App() {
 					/>
 					<div
 						id="albums-array"
-						className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-4/5  lg:w-2/3 gap-1 mx-auto"
+						className="mx-auto grid w-4/5 grid-cols-2 gap-1  sm:grid-cols-3 lg:w-2/3 lg:grid-cols-4"
 					>
 						{React.Children.toArray(
 							albums?.map((album) => (
 								<>
 									{album && (
-										<AlbumCard
-											links={linkPref}
-											image={album.images[0].url}
-											name={album.name}
-											browserLink={album.external_urls.spotify}
-											appLink={album.uri}
-										/>
+										<>
+											<AlbumCard
+												image={album.images[0].url}
+												name={album.name}
+												browserLink={album.external_urls.spotify}
+												appLink={album.uri}
+												links={linkPref}
+												date={album.release_date}
+												tracks={album.total_tracks}
+												artists={album.artists}
+												activeTheme={theme}
+											/>
+										</>
 									)}
 								</>
 							))
