@@ -7,9 +7,17 @@
 }
 
 .button-on {
-	@apply mx-1 rounded-md bg-black px-4 py-1 text-white ring-2 ring-black;
+	@apply mx-1 rounded-md bg-black px-4 py-1 text-white ring-4 ring-green-500;
 }
 
 .button-off {
-	@apply mx-1 rounded-md bg-white px-4 py-1 text-black ring-2 ring-black hover:cursor-pointer;
+	@apply mx-1 rounded-md bg-black px-4 py-1 text-white ring-2 ring-black hover:cursor-pointer;
+}
+
+.theme-button-on {
+	@apply m-1 h-6 w-6 rounded-full ring-4 ring-green-500;
+}
+
+.theme-button-off {
+	@apply m-1 h-6 w-6 rounded-full hover:cursor-pointer;
 }

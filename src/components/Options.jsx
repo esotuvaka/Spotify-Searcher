@@ -10,27 +10,27 @@ const Options = (props, activeTheme) => {
 		<aside
 			className={
 				theme === '#262626'
-					? 'pop h-screen w-80 bg-neutral-900 text-lg text-white transition-all duration-300'
-					: 'pop h-screen w-80 bg-neutral-50 text-lg text-black transition-all duration-300'
+					? 'pop flex h-screen w-80 flex-col justify-center bg-neutral-800 text-lg text-white shadow-md shadow-black transition-all duration-300'
+					: 'pop flex h-screen w-80 flex-col justify-center bg-white text-lg text-black shadow-md shadow-neutral-600 transition-all duration-300'
 			}
 		>
-			<div>
+			<div className="">
 				<div className="mx-auto my-8 flex w-4/5 items-center justify-between">
 					<h2
 						className={
 							theme === '#262626'
-								? 'pop mx-auto border-b-2 border-white px-3 text-3xl text-white transition-all duration-300'
-								: 'pop mx-auto border-b-2 border-black px-3 text-3xl text-black transition-all duration-300'
+								? 'pop rounded-lg text-3xl text-white transition-all duration-300'
+								: 'pop rounded-lg text-3xl text-black transition-all duration-300'
 						}
 					>
-						OPTIONS
+						Options
 					</h2>
 					<div
 						onClick={() => props.changeOptionsOpen(false)}
 						className={
 							theme === '#262626'
-								? 'pop h-7 rounded-md bg-white px-3 text-black hover:cursor-pointer'
-								: 'pop h-7 rounded-md bg-neutral-800 px-3 text-white hover:cursor-pointer'
+								? 'pop flex h-9 items-center justify-center rounded-md border border-transparent bg-black px-3 font-bold text-white transition-all duration-300 hover:cursor-pointer hover:border-red-500 hover:text-red-500'
+								: 'pop flex h-9 items-center justify-center rounded-md border border-transparent bg-black px-3 text-white transition-all duration-300 hover:cursor-pointer hover:border-red-500 hover:text-red-500'
 						}
 					>
 						X
@@ -38,7 +38,7 @@ const Options = (props, activeTheme) => {
 				</div>
 				<ul className="m-8 ">
 					<li>
-						<p className="text-xl">Theme:</p>
+						<p className="text-xl">Theme</p>
 						<div
 							id="color-selector"
 							className="mx-auto my-2 grid w-3/5 grid-cols-4 place-items-center justify-between"
@@ -50,8 +50,8 @@ const Options = (props, activeTheme) => {
 								}}
 								className={
 									theme === '#f5f5f4'
-										? 'm-1 h-6 w-6 rounded-full bg-stone-200 ring-2 ring-black'
-										: 'm-1 h-6 w-6 rounded-full bg-stone-200 hover:cursor-pointer'
+										? 'theme-button-on bg-stone-200  '
+										: 'theme-button-off bg-stone-200  '
 								}
 							/>
 							<div
@@ -61,8 +61,8 @@ const Options = (props, activeTheme) => {
 								}}
 								className={
 									theme === '#262626'
-										? 'm-1 h-6 w-6 rounded-full bg-neutral-800 ring-2 ring-black'
-										: 'm-1 h-6 w-6 rounded-full bg-neutral-800 hover:cursor-pointer'
+										? 'theme-button-on bg-neutral-800  '
+										: 'theme-button-off bg-neutral-800  '
 								}
 							/>
 							<div
@@ -72,8 +72,8 @@ const Options = (props, activeTheme) => {
 								}}
 								className={
 									theme === '#ef4444'
-										? 'm-1 h-6 w-6 rounded-full bg-red-500 ring-2 ring-black'
-										: 'm-1 h-6 w-6 rounded-full bg-red-500 hover:cursor-pointer'
+										? 'theme-button-on bg-red-500 '
+										: 'theme-button-off bg-red-500  '
 								}
 							/>
 							<div
@@ -83,8 +83,8 @@ const Options = (props, activeTheme) => {
 								}}
 								className={
 									theme === '#818cf8'
-										? 'm-1 h-6 w-6 rounded-full bg-indigo-400 ring-2 ring-black'
-										: 'm-1 h-6 w-6 rounded-full bg-indigo-400 hover:cursor-pointer'
+										? 'theme-button-on bg-indigo-400  '
+										: 'theme-button-off bg-indigo-400  '
 								}
 							/>
 							<div
@@ -94,8 +94,8 @@ const Options = (props, activeTheme) => {
 								}}
 								className={
 									theme === '#1d4ed8'
-										? 'm-1 h-6 w-6 rounded-full bg-blue-700 ring-2 ring-black'
-										: 'm-1 h-6 w-6 rounded-full bg-blue-700 hover:cursor-pointer'
+										? 'theme-button-on bg-blue-700  '
+										: 'theme-button-off bg-blue-700  '
 								}
 							/>
 							<div
@@ -105,8 +105,8 @@ const Options = (props, activeTheme) => {
 								}}
 								className={
 									theme === '#059669'
-										? 'm-1 h-6 w-6 rounded-full bg-emerald-600 ring-2 ring-black'
-										: 'm-1 h-6 w-6 rounded-full bg-emerald-600 hover:cursor-pointer'
+										? 'theme-button-on bg-emerald-600  '
+										: 'theme-button-off bg-emerald-600  '
 								}
 							/>
 							<div
@@ -116,8 +116,8 @@ const Options = (props, activeTheme) => {
 								}}
 								className={
 									theme === '#f97316'
-										? 'm-1 h-6 w-6 rounded-full bg-orange-500 ring-2 ring-black'
-										: 'm-1 h-6 w-6 rounded-full bg-orange-500 hover:cursor-pointer'
+										? 'theme-button-on bg-orange-500  '
+										: 'theme-button-off bg-orange-500  '
 								}
 							/>
 							<div
@@ -127,14 +127,14 @@ const Options = (props, activeTheme) => {
 								}}
 								className={
 									theme === '#eab308'
-										? 'm-1 h-6 w-6 rounded-full bg-yellow-500 ring-2 ring-black'
-										: 'm-1 h-6 w-6 rounded-full bg-yellow-500 hover:cursor-pointer'
+										? 'theme-button-on bg-yellow-500'
+										: 'theme-button-off bg-yellow-500'
 								}
 							/>
 						</div>
 					</li>
 					<li className="">
-						<p className="mt-4 text-xl">Genres:</p>
+						<p className="mt-4 text-xl">Genres</p>
 						<div>
 							<ul className="my-4 flex flex-row items-center justify-center">
 								<li
@@ -177,7 +177,7 @@ const Options = (props, activeTheme) => {
 						</div>
 					</li>
 					<li>
-						<p className="mt-4 text-xl">Open Links In:</p>
+						<p className="mt-4 text-xl">Open Links In</p>
 						<div className="my-4 flex flex-row items-center justify-center">
 							<button
 								onClick={() => {

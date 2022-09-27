@@ -39,16 +39,20 @@ const AlbumCard = ({
 						: 'hidden'
 				}
 			>
-				<div className="flex w-5/6 flex-row rounded-lg lg:w-2/3 2xl:max-w-[1050px]">
-					<div id="album-modal-left" className="w-3/5">
-						<img src={image} alt="/" className="rounded-l-lg  " />
+				<div className="flex w-5/6 flex-col rounded-lg sm:flex-row lg:w-2/3 2xl:max-w-[1050px]">
+					<div id="album-modal-left" className="w-full sm:w-3/5">
+						<img
+							src={image}
+							alt="/"
+							className="rounded-t-lg sm:rounded-r-none sm:rounded-l-lg"
+						/>
 					</div>
 					<div
 						id="album-modal-right"
 						className={
 							activeTheme === '#262626'
-								? 'flex w-2/5 flex-col justify-between rounded-r-lg bg-neutral-800 p-[5%] text-white'
-								: 'flex w-2/5 flex-col justify-between rounded-r-lg bg-white p-[5%]'
+								? 'flex w-full flex-col justify-between rounded-b-lg bg-neutral-800 p-[5%] text-white sm:w-2/5 sm:rounded-r-lg sm:rounded-l-none'
+								: 'flex w-full flex-col justify-between rounded-b-lg bg-white p-[5%] sm:w-2/5 sm:rounded-r-lg sm:rounded-l-none'
 						}
 					>
 						<div>
@@ -62,7 +66,7 @@ const AlbumCard = ({
 							>
 								{date}
 							</p>
-							<button className="pop mt-4 w-[90px] rounded bg-green-600 px-2 py-1 text-white shadow-sm shadow-neutral-700 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:shadow-neutral-700">
+							<button className="pop mt-2 mb-2 w-[90px] rounded bg-green-600 px-2 py-1 text-white shadow-sm shadow-neutral-700 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:shadow-neutral-700 sm:mb-0 sm:mt-4">
 								<a
 									target="_blank"
 									rel="noreferrer"
