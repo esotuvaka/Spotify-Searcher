@@ -102,8 +102,8 @@ function App() {
 				style={{ background: theme === '#262626' ? `#262626` : `#ffffff` }}
 				className={
 					theme === '#262626'
-						? 'fixed top-0 w-full bg-neutral-800 text-white shadow-sm shadow-black transition-all duration-300'
-						: 'fixed top-0 w-full bg-white text-neutral-800 shadow-md transition-all duration-300'
+						? 'fixed top-0 z-10 w-full bg-neutral-800 text-white shadow-sm shadow-black transition-all duration-300'
+						: 'fixed top-0 z-10 w-full bg-white text-neutral-800 shadow-md transition-all duration-300'
 				}
 			>
 				<div
@@ -112,6 +112,7 @@ function App() {
 				>
 					<div className="w-full">
 						<div className="mx-auto flex w-4/5 flex-col items-center justify-between sm:flex-row lg:w-2/3 ">
+							<div />
 							<div className="flex">
 								<input
 									type="text"
