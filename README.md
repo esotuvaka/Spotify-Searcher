@@ -4,6 +4,14 @@
 
 ### Changelog:
 
+9/26/2022
+
+- Fixed dark mode UI issues on AlbumCard component
+- Improved Options component UI
+- Fixed Mobile UI for AlbumCard
+- Fixed 4K UI for AlbumCard
+- Added new Modal for each album that shows album name, release date, a link to listen on spotify, the artists, and the number of tracks
+
 9/24/2022
 
 - Created Options component that enables color theme choice, genre numbers displayed, and linking to browser URL or in-app URI
@@ -38,7 +46,4 @@
 
 ### Working changes:
 
-- Add suggested search results to enable finding exact artists amongst similar names (e.g: Anders vs Anderson .Paak, Dave vs Dave Matthews Band)
-- Add Day of release to album card
-- Possibly add a song / album playback option
-- Add album modals that will show more info (release date, number and name of tracks, etc)
+99% Complete!

@@ -8,8 +8,8 @@ const ArtistCard = ({ props, genresNum, links, activeTheme }) => {
 			<div
 				className={
 					activeTheme === '#262626'
-						? 'flex flex-col justify-between rounded-lg bg-neutral-800 shadow-md shadow-black transition-all duration-300 sm:h-96 sm:flex-row xl:h-[30vh] 2xl:h-[50vh]'
-						: 'flex flex-col justify-between rounded-lg bg-white shadow-md shadow-neutral-700 transition-all duration-300 sm:h-96 sm:flex-row xl:h-[30vh] 2xl:h-[50vh]'
+						? 'flex flex-col justify-between rounded-lg bg-neutral-800 shadow-md shadow-black transition-all duration-300 sm:h-96 sm:flex-row xl:h-[40vh] 2xl:h-[50vh]'
+						: 'flex flex-col justify-between rounded-lg bg-white shadow-md shadow-neutral-700 transition-all duration-300 sm:h-96 sm:flex-row xl:h-[40vh] 2xl:h-[50vh]'
 				}
 			>
 				<div className="mx-[5%] my-[5%]">
@@ -68,7 +68,7 @@ const ArtistCard = ({ props, genresNum, links, activeTheme }) => {
 					<img
 						src={props.images[0].url}
 						alt="/"
-						className="w-full rounded-b-lg sm:h-96 sm:rounded-r-lg sm:rounded-bl-none xl:h-[30vh] 2xl:h-[50vh]"
+						className="w-full rounded-b-lg sm:h-96 sm:rounded-r-lg sm:rounded-bl-none xl:h-[40vh] 2xl:h-[50vh]"
 					/>
 				</div>
 			</div>

@@ -96,21 +96,23 @@ function App() {
 						: `linear-gradient(#ffffff, ${theme})`,
 			}}
 			id="main-bg"
-			className="h-screen w-full overflow-x-hidden transition-all duration-300"
+			className="fixed h-screen w-full overflow-y-scroll transition-all duration-300"
 		>
 			<header
 				style={{ background: theme === '#262626' ? `#262626` : `#ffffff` }}
 				className={
 					theme === '#262626'
-						? 'fixed top-0 z-10 w-full bg-neutral-800 text-white shadow-sm shadow-black transition-all duration-300'
-						: 'fixed top-0 z-10 w-full bg-white text-neutral-800 shadow-md transition-all duration-300'
+						? 'fixed top-0 w-full bg-neutral-800 text-white shadow-sm shadow-black transition-all duration-300'
+						: 'fixed top-0 w-full bg-white text-neutral-800 shadow-md transition-all duration-300'
 				}
 			>
-				<div id="outer-container" className="grid h-28 place-items-center ">
+				<div
+					id="outer-container"
+					className="flex h-28 items-center justify-center"
+				>
 					<div className="w-full">
 						<div className="mx-auto flex w-4/5 flex-col items-center justify-between sm:flex-row lg:w-2/3 ">
-							<div id="search-centerer" />
-							<div className="flex w-full items-center justify-center">
+							<div className="flex">
 								<input
 									type="text"
 									id="search"
@@ -118,8 +120,8 @@ function App() {
 									placeholder="Enter an artist's name"
 									className={
 										theme === '#262626'
-											? 'pop h-7 w-2/3 rounded-l-lg rounded-r-none border border-neutral-700 bg-black px-2 font-light focus:rounded-r-none focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500'
-											: 'pop h-7 w-2/3 rounded-l-lg rounded-r-none border border-neutral-300 px-2 font-light focus:rounded-r-none focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500'
+											? 'pop h-7 w-2/3 rounded-l-lg rounded-r-none border border-neutral-700 bg-black px-2 font-light focus:rounded-r-none focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 sm:w-64'
+											: 'pop h-7 w-2/3 rounded-l-lg rounded-r-none border border-neutral-300 px-2 font-light focus:rounded-r-none focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 sm:w-64'
 									}
 									onKeyUp={(e) => {
 										if (e.key === 'Enter') {
@@ -132,8 +134,8 @@ function App() {
 								<button
 									className={
 										theme === '#262626'
-											? 'pop flex h-7 items-center justify-center rounded-r-md bg-black px-3 text-white'
-											: 'pop flex h-7 items-center justify-center rounded-r-md bg-neutral-800 px-3 text-white'
+											? 'pop flex h-7 items-center justify-center rounded-r-md bg-black px-3 text-white transition-all duration-300 hover:text-green-400'
+											: 'pop flex h-7 items-center justify-center rounded-r-md bg-neutral-800 px-3 text-white transition-all duration-300 hover:text-green-400'
 									}
 									onClick={(e) => {
 										Search();
@@ -146,20 +148,18 @@ function App() {
 								onClick={() => setOpenOptions(true)}
 								className={
 									theme === '#262626'
-										? 'pop mt-4 flex h-7 items-center justify-center rounded-md bg-black px-3 text-white sm:mt-0'
-										: 'pop mt-4 flex h-7 items-center justify-center rounded-md bg-neutral-800 px-3 text-white sm:mt-0'
+										? 'pop mt-4 flex h-7 items-center justify-center rounded-md bg-black px-3 text-white transition-all duration-300 hover:text-green-500 sm:mt-0'
+										: 'pop mt-4 flex h-7 items-center justify-center rounded-md bg-neutral-800 px-3 text-white transition-all duration-300 hover:text-green-500 sm:mt-0'
 								}
 							>
 								OPTIONS
 							</button>
-							<div className="absolute top-0 right-0 z-50">
-								<div
-									className={
-										openOptions
-											? 'flex transition-all duration-300'
-											: 'hidden transition-all duration-300'
-									}
-								>
+							<div
+								className={
+									openOptions ? 'absolute top-0 right-0 z-50' : 'hidden'
+								}
+							>
+								<div className={openOptions ? 'flex  ' : 'hidden  '}>
 									<Options
 										activeTheme={theme}
 										changeTheme={(data) => setTheme(data)}
