@@ -1,7 +1,7 @@
 {
 	"name": "spotify-searcher",
 	"version": "0.1.0",
-	"homepage": "https://esotuvaka.github.io/Spotify-Searcher/",
+	"homepage": "https://esotuvaka.github.io/spotify-search/",
 	"private": false,
 	"dependencies": {
 		"@testing-library/jest-dom": "^5.16.5",
