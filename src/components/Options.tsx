@@ -1,9 +1,21 @@
 import React from 'react';
 import { useState } from 'react';
 
-const Options = (props, activeTheme) => {
-	const [theme, setTheme] = useState('#ffffff');
-	const [genNum, setGenNum] = useState('3');
+interface IOptions {
+	changeOptionsOpen: (open: boolean) => void;
+	changeTheme: (str: string) => void;
+	changeGenreNum: (num: number) => void;
+	changeLinkPref: (str: string) => void;
+}
+
+const Options = ({
+	changeOptionsOpen,
+	changeTheme,
+	changeGenreNum,
+	changeLinkPref,
+}: IOptions) => {
+	const [theme, setTheme] = useState('#262626');
+	const [genNum, setGenNum] = useState(3);
 	const [linkPref, setLinkPref] = useState('app');
 
 	return (
@@ -26,7 +38,7 @@ const Options = (props, activeTheme) => {
 						Options
 					</h2>
 					<div
-						onClick={() => props.changeOptionsOpen(false)}
+						onClick={() => changeOptionsOpen(false)}
 						className={
 							theme === '#262626'
 								? 'pop flex h-9 items-center justify-center rounded-md border border-transparent bg-black px-3 font-bold text-white transition-all duration-300 hover:cursor-pointer hover:border-red-500 hover:text-red-500'
@@ -43,21 +55,11 @@ const Options = (props, activeTheme) => {
 							id="color-selector"
 							className="mx-auto my-2 grid w-3/5 grid-cols-4 place-items-center justify-between"
 						>
-							<div
-								onClick={() => {
-									setTheme('#f5f5f4');
-									props.changeTheme('#f5f5f4');
-								}}
-								className={
-									theme === '#f5f5f4'
-										? 'theme-button-on bg-stone-200  '
-										: 'theme-button-off bg-stone-200  '
-								}
-							/>
+							{/* Could convert each of these color settings into their own component that passes state up */}
 							<div
 								onClick={() => {
 									setTheme('#262626');
-									props.changeTheme('#262626');
+									changeTheme('#262626');
 								}}
 								className={
 									theme === '#262626'
@@ -67,8 +69,20 @@ const Options = (props, activeTheme) => {
 							/>
 							<div
 								onClick={() => {
+									setTheme('#f5f5f4');
+									changeTheme('#f5f5f4');
+								}}
+								className={
+									theme === '#f5f5f4'
+										? 'theme-button-on bg-stone-200  '
+										: 'theme-button-off bg-stone-200  '
+								}
+							/>
+
+							<div
+								onClick={() => {
 									setTheme('#ef4444');
-									props.changeTheme('#ef4444');
+									changeTheme('#ef4444');
 								}}
 								className={
 									theme === '#ef4444'
@@ -79,7 +93,7 @@ const Options = (props, activeTheme) => {
 							<div
 								onClick={() => {
 									setTheme('#818cf8');
-									props.changeTheme('#818cf8');
+									changeTheme('#818cf8');
 								}}
 								className={
 									theme === '#818cf8'
@@ -90,7 +104,7 @@ const Options = (props, activeTheme) => {
 							<div
 								onClick={() => {
 									setTheme('#1d4ed8');
-									props.changeTheme('#1d4ed8');
+									changeTheme('#1d4ed8');
 								}}
 								className={
 									theme === '#1d4ed8'
@@ -101,7 +115,7 @@ const Options = (props, activeTheme) => {
 							<div
 								onClick={() => {
 									setTheme('#059669');
-									props.changeTheme('#059669');
+									changeTheme('#059669');
 								}}
 								className={
 									theme === '#059669'
@@ -112,7 +126,7 @@ const Options = (props, activeTheme) => {
 							<div
 								onClick={() => {
 									setTheme('#f97316');
-									props.changeTheme('#f97316');
+									changeTheme('#f97316');
 								}}
 								className={
 									theme === '#f97316'
@@ -123,7 +137,7 @@ const Options = (props, activeTheme) => {
 							<div
 								onClick={() => {
 									setTheme('#eab308');
-									props.changeTheme('#eab308');
+									changeTheme('#eab308');
 								}}
 								className={
 									theme === '#eab308'
@@ -140,7 +154,7 @@ const Options = (props, activeTheme) => {
 								<li
 									onClick={() => {
 										setGenNum(1);
-										props.changeGenreNum(1);
+										changeGenreNum(1);
 									}}
 									className={genNum === 1 ? 'button-on' : 'button-off'}
 								>
@@ -149,7 +163,7 @@ const Options = (props, activeTheme) => {
 								<li
 									onClick={() => {
 										setGenNum(2);
-										props.changeGenreNum(2);
+										changeGenreNum(2);
 									}}
 									className={genNum === 2 ? 'button-on ' : 'button-off '}
 								>
@@ -158,7 +172,7 @@ const Options = (props, activeTheme) => {
 								<li
 									onClick={() => {
 										setGenNum(3);
-										props.changeGenreNum(3);
+										changeGenreNum(3);
 									}}
 									className={genNum === 3 ? 'button-on ' : 'button-off '}
 								>
@@ -167,7 +181,7 @@ const Options = (props, activeTheme) => {
 								<li
 									onClick={() => {
 										setGenNum(25);
-										props.changeGenreNum(25);
+										changeGenreNum(25);
 									}}
 									className={genNum === 25 ? 'button-on ' : 'button-off '}
 								>
@@ -182,7 +196,7 @@ const Options = (props, activeTheme) => {
 							<button
 								onClick={() => {
 									setLinkPref('browser');
-									props.changeLinkPref('browser');
+									changeLinkPref('browser');
 								}}
 								className={linkPref === 'browser' ? 'button-on' : 'button-off'}
 							>
@@ -191,7 +205,7 @@ const Options = (props, activeTheme) => {
 							<button
 								onClick={() => {
 									setLinkPref('app');
-									props.changeLinkPref('app');
+									changeLinkPref('app');
 								}}
 								className={linkPref === 'app' ? 'button-on' : 'button-off'}
 							>

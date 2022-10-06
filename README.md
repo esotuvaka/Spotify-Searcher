@@ -4,6 +4,12 @@
 
 ### Changelog:
 
+10/5/2022
+
+- Began conversion to TypeScript
+- Created multiple custom types and successfully converted most files to TSX format
+- Fixed small UI bugs at 1440px screen sizes
+
 9/26/2022
 
 - Fixed dark mode UI issues on AlbumCard component
@@ -46,4 +52,6 @@
 
 ### Working changes:
 
-99% Complete!
+CONVERSION TO TYPESCRIPT
+
+Need to destructure the artistStats OBJECT and give it types.

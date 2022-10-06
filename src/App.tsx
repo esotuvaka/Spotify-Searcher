@@ -5,26 +5,59 @@ import Options from './components/Options';
 import ArtistCard from './components/ArtistCard';
 import AlbumCard from './components/AlbumCard';
 
-// environment variables are embedded into the build, so can't store secrets securely without calling a backend that then calls the spotify API. Will let these secrets stay here for now
+import { ArtistArray, ImageArray } from './Types';
 
-// CLIENT ID and SECRET are used for base artist album search
-const CLIENT_ID = 'b735756be4674ec08ea99b684cfa966c';
-const CLIENT_SECRET = 'd9d47b64576946e3903805ef5be2884e';
+//Each album should have:
+interface IAlbum {
+	album_group?: string;
+	album_type?: string;
+	artists: ArtistArray[];
+	external_urls: {
+		spotify: string;
+	};
+	href: string;
+	id?: string;
+	images: ImageArray[];
+	name: string;
+	release_date: string;
+	release_date_precision?: string;
+	total_tracks: number;
+	type?: string;
+	uri: string;
+}
+
+//Each artist should have:
+interface IArtist {
+	external_urls: {
+		spotify: string;
+	};
+	followers: {
+		total: number;
+	};
+	genres: string[];
+	href?: string; //artist href is used for spotify web playback
+	id?: string;
+	images: ImageArray[];
+	name: string;
+	popularity?: number;
+	type?: string;
+	uri: string;
+}
 
 function App() {
-	const [accessToken, setAccessToken] = useState('');
-	const [loading, setLoading] = useState(true);
+	const [accessToken, setAccessToken] = useState<string>('');
+	const [loading, setLoading] = useState<boolean>(true);
 
-	const [searchInput, setSearchInput] = useState('');
-	const [openOptions, setOpenOptions] = useState(false);
+	const [searchInput, setSearchInput] = useState<string>('');
+	const [openOptions, setOpenOptions] = useState<boolean>(false);
 
-	const [theme, setTheme] = useState('#f5f5f4');
-	const [genreNum, setGenreNum] = useState(3);
-	const [linkPref, setLinkPref] = useState('app');
+	const [theme, setTheme] = useState<string>('#262626');
+	const [genreNum, setGenreNum] = useState<number>(3);
+	const [linkPref, setLinkPref] = useState<string>('app');
 
-	const [artistStats, setArtistStats] = useState([]);
+	const [artist, setArtist] = useState<IArtist>();
 
-	const [albums, setAlbums] = useState([]);
+	const [albums, setAlbums] = useState<[]>([]);
 
 	useEffect(() => {
 		//API ACCESS TOKEN
@@ -33,7 +66,7 @@ function App() {
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded',
 			},
-			body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`,
+			body: `grant_type=client_credentials&client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`,
 		};
 
 		fetch('https://accounts.spotify.com/api/token', authParameters)
@@ -43,8 +76,6 @@ function App() {
 
 	//SEARCH FUNCTION
 	async function Search() {
-		console.log('Search for ' + searchInput);
-
 		//get request via search to get the artist ID
 		const searchParameters = {
 			method: 'GET',
@@ -56,14 +87,16 @@ function App() {
 
 		let artistID = '';
 
-		const returnedArtistStats = await fetch(
+		const returnedartist = await fetch(
 			//JUST FOR THE ARTISTS GENERAL STATS
 			`https://api.spotify.com/v1/search?q=${searchInput}&type=artist`,
 			searchParameters
 		)
 			.then((response) => response.json())
 			.then((data) => {
-				setArtistStats(data.artists.items[0]);
+				//artist is an OBJECT
+				//here, artist is set to the 0 index of an array of objects
+				setArtist(data.artists.items[0]);
 				artistID = data.artists.items[0].id;
 
 				console.log(data);
@@ -83,7 +116,7 @@ function App() {
 		setLoading(false);
 	}
 
-	const handleChange = (e) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchInput(e.target.value);
 	};
 
@@ -124,7 +157,7 @@ function App() {
 											? 'pop h-7 w-2/3 rounded-l-lg rounded-r-none border border-neutral-700 bg-black px-2 font-light focus:rounded-r-none focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 sm:w-64'
 											: 'pop h-7 w-2/3 rounded-l-lg rounded-r-none border border-neutral-300 px-2 font-light focus:rounded-r-none focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 sm:w-64'
 									}
-									onKeyUp={(e) => {
+									onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
 										if (e.key === 'Enter') {
 											Search();
 										}
@@ -138,7 +171,7 @@ function App() {
 											? 'pop flex h-7 items-center justify-center rounded-r-md bg-black px-3 text-white transition-all duration-300 hover:text-green-400'
 											: 'pop flex h-7 items-center justify-center rounded-r-md bg-neutral-800 px-3 text-white transition-all duration-300 hover:text-green-400'
 									}
-									onClick={(e) => {
+									onClick={() => {
 										Search();
 									}}
 								>
@@ -160,10 +193,11 @@ function App() {
 									openOptions ? 'absolute top-0 right-0 z-50' : 'hidden'
 								}
 							>
-								<div className={openOptions ? 'flex  ' : 'hidden  '}>
+								<div className={openOptions ? 'flex' : 'hidden'}>
 									<Options
-										activeTheme={theme}
-										changeTheme={(data) => setTheme(data)}
+										changeTheme={(data) => {
+											return setTheme(data);
+										}}
 										changeOptionsOpen={(data) => setOpenOptions(data)}
 										changeGenreNum={(data) => setGenreNum(data)}
 										changeLinkPref={(data) => setLinkPref(data)}
@@ -175,7 +209,7 @@ function App() {
 				</div>
 			</header>
 			{loading ? (
-				<Welcome themeColor={theme} />
+				<Welcome activeTheme={theme} />
 			) : (
 				<div
 					style={{
@@ -184,33 +218,38 @@ function App() {
 								? `linear-gradient(${theme}, #000000)`
 								: `linear-gradient(#ffffff, ${theme})`,
 					}}
-					className="mt-24 w-full pb-32 pt-8"
+					className={`mt-24 w-full pb-32 pt-8  `}
 				>
 					<ArtistCard
-						props={artistStats}
 						activeTheme={theme}
-						genresNum={genreNum}
-						links={linkPref}
+						genreNum={genreNum}
+						linkPref={linkPref}
+						href={artist?.external_urls?.spotify}
+						followers={artist?.followers?.total}
+						genres={artist?.genres}
+						image={artist?.images[0].url}
+						name={artist?.name}
+						uri={artist?.uri}
 					/>
 					<div
 						id="albums-array"
 						className="mx-auto grid w-4/5 grid-cols-2 gap-1  sm:grid-cols-3 lg:w-2/3 lg:grid-cols-4"
 					>
 						{React.Children.toArray(
-							albums?.map((album) => (
+							albums?.map((album: IAlbum) => (
 								<>
 									{album && (
 										<>
 											<AlbumCard
+												activeTheme={theme}
+												linkPref={linkPref}
 												image={album.images[0].url}
 												name={album.name}
-												browserLink={album.external_urls.spotify}
-												appLink={album.uri}
-												links={linkPref}
+												href={album.external_urls.spotify}
+												uri={album.uri}
 												date={album.release_date}
 												tracks={album.total_tracks}
 												artists={album.artists}
-												activeTheme={theme}
 											/>
 										</>
 									)}

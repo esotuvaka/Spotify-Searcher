@@ -1,18 +1,35 @@
 import React, { useState } from 'react';
 
-import Logo from '../assets/S-Logo.png';
+import Logo from '../assets/logo.png';
+
+import { ArtistArray } from '../Types';
+
+//AlbumCard Component
+export interface IAlbumCard {
+	linkPref: string;
+	activeTheme: string;
+
+	image: string;
+	name: string;
+	href: string;
+	uri: string;
+	date: string;
+	tracks: number;
+	artists: ArtistArray[];
+}
 
 const AlbumCard = ({
+	activeTheme,
+	linkPref,
+
 	image,
 	name,
-	browserLink,
-	appLink,
-	links,
+	href,
+	uri,
 	date,
 	tracks,
 	artists,
-	activeTheme,
-}) => {
+}: IAlbumCard) => {
 	const [modal, setModal] = useState(false);
 
 	return (
@@ -70,7 +87,7 @@ const AlbumCard = ({
 								<a
 									target="_blank"
 									rel="noreferrer"
-									href={links === 'browser' ? browserLink : appLink}
+									href={linkPref === 'browser' ? href : uri}
 									className="flex w-full items-center justify-between"
 								>
 									Open <img src={Logo} alt="Spotify logo" className="h-6" />
@@ -81,7 +98,7 @@ const AlbumCard = ({
 						<div>
 							<div className="flex flex-col">
 								{React.Children.toArray(
-									artists.map((artist) => (
+									artists.map((artist: any) => (
 										<p
 											className={
 												activeTheme === '#262626'

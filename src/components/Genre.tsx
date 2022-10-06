@@ -1,6 +1,11 @@
 import React from 'react';
 
-const Genre = ({ genreTag, activeTheme }) => {
+interface IGenre {
+	genreTag: string;
+	activeTheme: string;
+}
+
+const Genre = ({ genreTag, activeTheme }: IGenre) => {
 	return (
 		<div
 			className={

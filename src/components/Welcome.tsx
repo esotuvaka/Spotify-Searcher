@@ -1,12 +1,16 @@
 import React from 'react';
 
-const Welcome = (themeColor) => {
+interface IWelcome {
+	activeTheme: string;
+}
+
+const Welcome = ({ activeTheme }: IWelcome) => {
 	return (
 		<div className="mx-auto grid h-screen w-4/5 place-items-center lg:w-2/3">
 			<div className="flex flex-col">
 				<h1
 					className={
-						themeColor.themeColor === '#262626'
+						activeTheme === '#262626'
 							? 'pop text-4xl text-white'
 							: 'pop text-4xl'
 					}
@@ -15,7 +19,7 @@ const Welcome = (themeColor) => {
 				</h1>
 				<h2
 					className={
-						themeColor.themeColor === '#262626'
+						activeTheme === '#262626'
 							? 'pop text-2xl text-white'
 							: 'pop text-2xl'
 					}
