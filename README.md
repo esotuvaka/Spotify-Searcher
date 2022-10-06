@@ -4,6 +4,13 @@
 
 ### Changelog:
 
+10/6/2022
+
+- Conversion to TypeScript complete
+- Added .env file to more securely store secrets
+- Refactored prop passing (App -> ArtistCard) to access properties before pass
+- Changed app to load in dark mode by default
+
 10/5/2022
 
 - Began conversion to TypeScript
