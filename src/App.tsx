@@ -139,14 +139,11 @@ function App() {
 						: 'fixed top-0 z-10 w-full bg-white text-neutral-800 shadow-md transition-all duration-300'
 				}
 			>
-				<div
-					id="outer-container"
-					className="flex h-28 items-center justify-center"
-				>
+				<div id="outer-container" className="flex  items-center justify-center">
 					<div className="w-full">
-						<div className="mx-auto flex w-4/5 flex-col items-center justify-between sm:flex-row lg:w-2/3 ">
+						<div className="mx-auto flex w-4/5 flex-col items-center justify-between py-8 sm:flex-row lg:w-2/3">
 							<div />
-							<div className="flex">
+							<div className="flex ">
 								<input
 									type="text"
 									id="search"
@@ -218,7 +215,7 @@ function App() {
 								? `linear-gradient(${theme}, #000000)`
 								: `linear-gradient(#ffffff, ${theme})`,
 					}}
-					className={`mt-24 w-full pb-32 pt-8  `}
+					className={`mt-32 w-full pb-32 pt-8 sm:mt-24  `}
 				>
 					<ArtistCard
 						activeTheme={theme}
