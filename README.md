@@ -59,6 +59,4 @@
 
 ### Working changes:
 
-CONVERSION TO TYPESCRIPT
-
-Need to destructure the artistStats OBJECT and give it types.
+99% COMPLETE

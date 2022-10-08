@@ -155,7 +155,7 @@ function App() {
 											: 'pop h-7 w-2/3 rounded-l-lg rounded-r-none border border-neutral-300 px-2 font-light focus:rounded-r-none focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 sm:w-64'
 									}
 									onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
-										if (e.key === 'Enter') {
+										if (e.key === 'Enter' && searchInput?.length > 0) {
 											Search();
 										}
 									}}
@@ -169,7 +169,9 @@ function App() {
 											: 'pop flex h-7 items-center justify-center rounded-r-md bg-neutral-800 px-3 text-white transition-all duration-300 hover:text-green-400'
 									}
 									onClick={() => {
-										Search();
+										if (searchInput?.length > 0) {
+											Search();
+										}
 									}}
 								>
 									SEARCH

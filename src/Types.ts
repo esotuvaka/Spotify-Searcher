@@ -1,3 +1,5 @@
+// Optional type on interfaces and types in case I want this data / props in the future.
+
 export type ImageArray = {
 	height?: number;
 	url: string;
